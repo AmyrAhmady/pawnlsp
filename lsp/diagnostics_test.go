@@ -116,6 +116,16 @@ main() {
     }
 }
 `},
+		{"conditional macro and chained comparisons", `#define GUARD%0->%1; new %1; CHECK(%0);
+#define CHECK(%0);%2else if (%0)
+#assert !(3 < 2 < 1)
+stock InRange(Float:value) { return 0.0 <= value < 1.0; }
+stock Work(value) {
+    GUARD value -> result; else return 0;
+    return result;
+}
+main() { return Work(InRange(0.5)); }
+`},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
