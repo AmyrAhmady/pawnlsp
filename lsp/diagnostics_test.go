@@ -85,6 +85,68 @@ func TestEmptyDiagnosticsEncodeAsArray(t *testing.T) {
 	}
 }
 
+func TestCompilerAcceptedDeclarationsInDocumentDiagnostics(t *testing.T) {
+	tests := []struct {
+		name, text string
+	}{
+		{"explicit enum tags", "enum _:First { FirstValue }\nenum _:Second { SecondValue }\nmain() {}\n"},
+		{"callback macro", `#define Callback:%0(%1) forward %0(%1); public %0(%1)
+stock bool:Value() { return true; }
+Callback:Run() return Value();
+main() {}
+`},
+		{"command alias macro", `#define CMD:%1(%2) forward cmd_%1(%2); public cmd_%1(%2)
+#define Link:%1->%2; CMD:%1() return cmd_%2();
+CMD:flip() { return 1; }
+Link:fl->flip;
+main() {}
+`},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			uri := tempDocumentURI(t)
+			var input, output bytes.Buffer
+			frame(t, &input, map[string]any{"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": map[string]any{}})
+			frame(t, &input, map[string]any{"jsonrpc": "2.0", "method": "textDocument/didOpen", "params": map[string]any{
+				"textDocument": map[string]any{"uri": uri, "version": 1, "text": test.text},
+			}})
+			frame(t, &input, map[string]any{"jsonrpc": "2.0", "id": 2, "method": "textDocument/diagnostic", "params": map[string]any{
+				"textDocument": map[string]any{"uri": uri},
+			}})
+			frame(t, &input, map[string]any{"jsonrpc": "2.0", "method": "exit"})
+			if err := Run(&input, &output); err != nil {
+				t.Fatal(err)
+			}
+
+			reader := bufio.NewReader(&output)
+			for {
+				body, err := readFrame(reader)
+				if err != nil {
+					t.Fatalf("missing diagnostics response: %v", err)
+				}
+				var response struct {
+					ID     json.RawMessage `json:"id"`
+					Method string          `json:"method"`
+					Result struct {
+						Kind  string          `json:"kind"`
+						Items []lspDiagnostic `json:"items"`
+					} `json:"result"`
+				}
+				if err := json.Unmarshal(body, &response); err != nil {
+					t.Fatal(err)
+				}
+				if response.Method != "" || string(response.ID) != "2" {
+					continue
+				}
+				if response.Result.Kind != "full" || len(response.Result.Items) != 0 {
+					t.Fatalf("expected an empty full diagnostic report, got %s", body)
+				}
+				break
+			}
+		})
+	}
+}
+
 func TestPreserveDiagnosticsShiftsOnlyUnaffectedFindings(t *testing.T) {
 	items := lint.NewEngine(rules.Default()).LintFile(
 		"test.pwn", []byte("main() { new a; a = a; new b; b = b; }\n"), lint.ProjectAnalysis,
