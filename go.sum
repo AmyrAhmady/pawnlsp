@@ -1,7 +1,7 @@
-github.com/AmyrAhmady/pawn-analysis v0.0.0-20261111164329-9416b37426a1 h1:vpPmeax0qSwqhU4uMh7Gt9E7IYyWCym9r+5sOk3s7kQ=
-github.com/AmyrAhmady/pawn-analysis v0.0.0-20261111164329-9416b37426a1/go.mod h1:3qTxF4ru0ZaoIC9b09Oq2ejtRFi6+PrgNHgnrBFOnrU=
-github.com/AmyrAhmady/pawn-parser v0.0.0-20261111163340-39ace639966b h1:432U5idvcz6l0nziMdoUBiyqN5o4u2PK7/SgoGxjpXY=
-github.com/AmyrAhmady/pawn-parser v0.0.0-20261111163340-39ace639966b/go.mod h1:Egw7oGm4jkDpaWBvLkYItfNTZcAcvTg+gWjlAGL9rbI=
+github.com/AmyrAhmady/pawn-analysis v0.0.0-20261111165816-4f14fe5d06cd h1:xnlffkeJAGCG3H4l7NDFMjqi4HY466vfEY04FWyorYw=
+github.com/AmyrAhmady/pawn-analysis v0.0.0-20261111165816-4f14fe5d06cd/go.mod h1:JwQqiisNSFCQAQJ06o3ZkLFVk2f5WiiH5D4loT+rZ9c=
+github.com/AmyrAhmady/pawn-parser v0.0.0-20261111165522-e6ecc8e86f6e h1:dkpasVSRGewcUW7lP2gzkQIESAi3TtGwFApn70u7/os=
+github.com/AmyrAhmady/pawn-parser v0.0.0-20261111165522-e6ecc8e86f6e/go.mod h1:Egw7oGm4jkDpaWBvLkYItfNTZcAcvTg+gWjlAGL9rbI=
 github.com/BurntSushi/toml v1.6.0 h1:dRaEfpa2VI55EwlIW72hMRHdWouJeRF7TPYhI+AUQjk=
 github.com/BurntSushi/toml v1.6.0/go.mod h1:ukJfTF/6rtPPRCnwkur4qwRxa8vTRFBF0uk2lLoLwho=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=

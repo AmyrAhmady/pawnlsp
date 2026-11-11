@@ -107,6 +107,15 @@ native bool:SendMessage(playerid);
 CMD:example(playerid) { return SendMessage(playerid); }
 main() {}
 `},
+		{"textual macro in a case label", `#define HASH (_:HASH_TEXT:HASH_VALUE
+#define HASH_TEXT:HASH_VALUE<%0> 1)
+main() {
+    switch (0) {
+        case HASH<Next page>: return 1;
+        default: return 0;
+    }
+}
+`},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
