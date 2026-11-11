@@ -101,6 +101,12 @@ CMD:flip() { return 1; }
 Link:fl->flip;
 main() {}
 `},
+		{"command macro return tag", `#define DECLARE:%1(%2) forward cmd_%1(%2); public cmd_%1(%2)
+#define CMD:%1(%2) DECLARE:%1(%2)
+native bool:SendMessage(playerid);
+CMD:example(playerid) { return SendMessage(playerid); }
+main() {}
+`},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {

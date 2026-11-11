@@ -1,5 +1,5 @@
-github.com/AmyrAhmady/pawn-analysis v0.0.0-20261111163341-34ff72699b78 h1:ctSKMZ610Ug6hgjL3GcWMIp5oflCAxVus20g//RE3KA=
-github.com/AmyrAhmady/pawn-analysis v0.0.0-20261111163341-34ff72699b78/go.mod h1:3qTxF4ru0ZaoIC9b09Oq2ejtRFi6+PrgNHgnrBFOnrU=
+github.com/AmyrAhmady/pawn-analysis v0.0.0-20261111164329-9416b37426a1 h1:vpPmeax0qSwqhU4uMh7Gt9E7IYyWCym9r+5sOk3s7kQ=
+github.com/AmyrAhmady/pawn-analysis v0.0.0-20261111164329-9416b37426a1/go.mod h1:3qTxF4ru0ZaoIC9b09Oq2ejtRFi6+PrgNHgnrBFOnrU=
 github.com/AmyrAhmady/pawn-parser v0.0.0-20261111163340-39ace639966b h1:432U5idvcz6l0nziMdoUBiyqN5o4u2PK7/SgoGxjpXY=
 github.com/AmyrAhmady/pawn-parser v0.0.0-20261111163340-39ace639966b/go.mod h1:Egw7oGm4jkDpaWBvLkYItfNTZcAcvTg+gWjlAGL9rbI=
 github.com/BurntSushi/toml v1.6.0 h1:dRaEfpa2VI55EwlIW72hMRHdWouJeRF7TPYhI+AUQjk=
