@@ -27,6 +27,6 @@ require (
 
 tool golang.org/x/vuln/cmd/govulncheck
 
-replace github.com/pawnkit/pawn-analysis => github.com/AmyrAhmady/pawn-analysis v0.0.0-20261111162207-b0bf796f42b7
+replace github.com/pawnkit/pawn-analysis => github.com/AmyrAhmady/pawn-analysis v0.0.0-20261111163341-34ff72699b78
 
-replace github.com/pawnkit/pawn-parser => github.com/AmyrAhmady/pawn-parser v0.0.0-20261111162207-033c52f6eea2
+replace github.com/pawnkit/pawn-parser => github.com/AmyrAhmady/pawn-parser v0.0.0-20261111163340-39ace639966b
